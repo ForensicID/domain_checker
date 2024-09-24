@@ -85,6 +85,25 @@ echo "Menambah permission untuk mengeksekusi program"
 sudo chmod +x $MAIN_DIR/*
 sleep 1s
 
+echo "Memulai pemeriksaan domain..."
+bash $MAIN_DIR/domain_checker.sh -f $MAIN_DIR/domains.txt > $MAIN_DIR/result_main.txt && sed -i '/^$/d' $MAIN_DIR/result_main.txt
+sleep 10s
+echo "Menambahkan domain baru..."
+bash $MAIN_DIR/adding_domain.sh
+sleep 1s
+echo "Mengirimkan peringatan untuk perpanjangan..."
+bash $MAIN_DIR/alert_to_renew.sh
+sleep 1s
+echo "Mengambil domain lengkap..."
+bash $MAIN_DIR/command_get_fulldomain.sh
+sleep 1s
+echo "Mengambil detail domain..."
+bash $MAIN_DIR/command_get_details.sh
+sleep 1s
+echo "Mengonversi hasil ke format CSV..."
+bash $MAIN_DIR/convert_to_csv.sh
+sleep 1s
+echo "Proses selesai."
 # Menambahkan entri cron baru
 echo "0 9 * * * bash $MAIN_DIR/domain_checker.sh -f $MAIN_DIR/domains.txt > $MAIN_DIR/result_main.txt && sed -i '/^$/d' $MAIN_DIR/result_main.txt" >> "$CRON_FILE"
 echo "* * * * * bash $MAIN_DIR/adding_domain.sh" >> "$CRON_FILE"
