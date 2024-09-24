@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # Konfigurasi
-BOT_TOKEN="YOUR_BOT_TOKEN"
-CHAT_ID="YOUR_CHAT_ID"
-FILE_PATH="/root/cekdomain/domains.txt"
-PROCESSED_FILE="/root/cekdomain/domains_registered.txt"
+BOT_TOKEN="7141406407:AAGS79uDhIjYr1JktIG9nr8ncczuztl2wzs"
+CHAT_ID="6422320269"
+FILE_PATH="/root/domain_checker/domains.txt"
+PROCESSED_FILE="/root/domain_checker/domains_registered.txt"
 
 send_telegram_message() {
     local message="$1"
-    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=$m>}
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID&text=$message"
+}
 
 check_domains() {
     while IFS= read -r line; do
