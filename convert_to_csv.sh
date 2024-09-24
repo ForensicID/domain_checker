@@ -5,8 +5,8 @@ input_file="/root/cekdomain/result_main.txt"
 output_file="/root/cekdomain/domain_valid.csv"
 
 # Ganti dengan token bot dan chat ID Anda
-BOT_TOKEN="7141406407:AAGS79uDhIjYr1JktIG9nr8ncczuztl2wzs"
-CHAT_ID="6422320269"
+BOT_TOKEN="YOUR_BOT_TOKEN"
+CHAT_ID="YOUR_CHAT_ID"
 
 # Menghapus file CSV output jika sudah ada
 rm -f "$output_file"
