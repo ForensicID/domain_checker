@@ -3,8 +3,8 @@
 # Nama file yang berisi data
 domains="/root/cekdomain/result_main.txt"
 # Ganti dengan token bot dan chat ID Anda
-BOT_TOKEN="7141406407:AAGS79uDhIjYr1JktIG9nr8ncczuztl2wzs"
-CHAT_ID="6422320269"
+BOT_TOKEN="YOUR_BOT_TOKEN"
+CHAT_ID="YOUR_CHAT_ID"
 
 # Mengolah data dari file
 while read -r line; do
