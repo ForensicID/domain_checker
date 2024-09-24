@@ -1,5 +1,4 @@
-bash /root/cekdomain/domain_checker.sh -f /root/cekdomain/domains.txt > /root/cekdomain/result_main.txt && sed -i '/^$/d' /root/cekdomain/result_main.txt
-bash /root/cekdomain/adding_domain.sh
-bash /root/cekdomain/alert_to_renew.sh
-bash /root/cekdomain/convert_to_csv.sh
-bash /root/cekdomain/command_get_fulldomain.sh
+example.com
+google.com
+youtube.com
+# give space for last line
