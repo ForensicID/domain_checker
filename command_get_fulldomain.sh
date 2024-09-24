@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# install js
-
-TOKEN="7141406407:AAGS79uDhIjYr1JktIG9nr8ncczuztl2wzs"
+TOKEN="YOUR_BOT_TOKEN"
 DOMAIN_FILE="/root/cekdomain/domains_registered.txt"
 LAST_UPDATE_FILE="/root/cekdomain/last_updateid.txt"
 
