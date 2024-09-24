@@ -80,6 +80,10 @@ sleep 1s
 echo "Mengganti output_file dengan $MAIN_DIR/domain_valid.csv di $MAIN_DIR/convert_to_csv.sh"
 sed -i "s|output_file=\".*\"|output_file=\"$MAIN_DIR/domain_valid.csv\"|" "$MAIN_DIR/convert_to_csv.sh"
 sleep 1s
+# Menambah permission di dalam folder
+echo "Menambah permission untuk mengeksekusi program"
+sudo chmod +x $MAIN_DIR/*
+sleep 1s
 
 # Menambahkan entri cron baru
 echo "0 9 * * * bash $MAIN_DIR/domain_checker.sh -f $MAIN_DIR/domains.txt > $MAIN_DIR/result_main.txt && sed -i '/^$/d' $MAIN_DIR/result_main.txt" >> "$CRON_FILE"
