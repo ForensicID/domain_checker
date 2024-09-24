@@ -46,23 +46,17 @@ sleep 1s
 echo "Mengganti CHAT_ID di baris ke-7 $MAIN_DIR/alert_to_renew.sh"
 sed -i "7s/.*/CHAT_ID=\"$CHAT_ID\"/" "$MAIN_DIR/alert_to_renew.sh"
 sleep 1s
-# Mengganti TOKEN di command_get_fulldomain.sh
-echo "Mengganti TOKEN di baris ke-3 $MAIN_DIR/command_get_fulldomain.sh"
-sed -i "3s/.*/TOKEN=\"$BOT_TOKEN\"/" "$MAIN_DIR/command_get_fulldomain.sh"
+# Mengganti TOKEN di command.sh
+echo "Mengganti TOKEN di baris ke-3 $MAIN_DIR/command.sh"
+sed -i "3s/.*/TOKEN=\"$BOT_TOKEN\"/" "$MAIN_DIR/command.sh"
 sleep 1s
-# Mengganti DOMAIN_FILE di command_get_fulldomain.sh
-echo "Mengganti DOMAIN_FILE dengan $MAIN_DIR/domains_registered.txt di $MAIN_DIR/command_get_fulldomain.sh"
-sed -i "s|DOMAIN_FILE=\".*\"|DOMAIN_FILE=\"$MAIN_DIR/domains_registered.txt\"|" "$MAIN_DIR/command_get_fulldomain.sh"
+# Mengganti DOMAIN_FILE di command.sh
+echo "Mengganti DOMAIN_FILE dengan $MAIN_DIR/domains_registered.txt di $MAIN_DIR/command.sh"
+sed -i "s|DOMAIN_FILE=\".*\"|DOMAIN_FILE=\"$MAIN_DIR/domains_registered.txt\"|" "$MAIN_DIR/command.sh"
 sleep 1s
-# Mengganti LAST_UPDATE_FILE di command_get_fulldomain.sh
-echo "Mengganti LAST_UPDATE_FILE dengan $MAIN_DIR/last_updateid.txt di $MAIN_DIR/command_get_fulldomain.sh"
-sed -i "s|LAST_UPDATE_FILE=\".*\"|LAST_UPDATE_FILE=\"$MAIN_DIR/last_updateid.txt\"|" "$MAIN_DIR/command_get_fulldomain.sh"
-sleep 1s
-echo "Mengganti TOKEN di baris ke-3 $MAIN_DIR/command_get_details.sh"
-sed -i "3s/.*/TOKEN=\"$BOT_TOKEN\"/" "$MAIN_DIR/command_get_details.sh"
-sleep 1s
-echo "Mengganti LAST_UPDATE_FILE dengan $MAIN_DIR/last_updateid.txt di $MAIN_DIR/command_get_details.sh"
-sed -i "s|ANSWERED_FILE=\".*\"|ANSWERED_FILE=\"$MAIN_DIR/last_updateid.txt\"|" "$MAIN_DIR/command_get_details.sh"
+# Mengganti LAST_UPDATE_FILE di command.sh
+echo "Mengganti LAST_UPDATE_FILE dengan $MAIN_DIR/last_updateid.txt di $MAIN_DIR/command.sh"
+sed -i "s|UPDATE_FILE=\".*\"|UPDATE_FILE=\"$MAIN_DIR/last_updateid.txt\"|" "$MAIN_DIR/command.sh"
 sleep 1s
 # Mengganti CHAT_ID di baris ke-9 di convert_to_csv.sh
 echo "Mengganti CHAT_ID di baris ke-9 $MAIN_DIR/convert_to_csv.sh"
@@ -95,11 +89,7 @@ echo "Mengirimkan peringatan untuk perpanjangan..."
 bash $MAIN_DIR/alert_to_renew.sh
 sleep 1s
 echo "Mengambil domain lengkap..."
-bash $MAIN_DIR/command_get_fulldomain.sh
-sleep 1s
-echo "Mengambil detail domain..."
-bash $MAIN_DIR/command_get_details.sh
-sleep 1s
+bash $MAIN_DIR/command.sh
 echo "Mengonversi hasil ke format CSV..."
 bash $MAIN_DIR/convert_to_csv.sh
 sleep 1s
@@ -108,8 +98,7 @@ echo "Proses selesai."
 echo "0 9 * * * bash $MAIN_DIR/domain_checker.sh -f $MAIN_DIR/domains.txt > $MAIN_DIR/result_main.txt && sed -i '/^$/d' $MAIN_DIR/result_main.txt" >> "$CRON_FILE"
 echo "* * * * * bash $MAIN_DIR/adding_domain.sh" >> "$CRON_FILE"
 echo "1 9 * * * bash $MAIN_DIR/alert_to_renew.sh" >> "$CRON_FILE"
-echo "* * * * * bash $MAIN_DIR/command_get_fulldomain.sh" >> "$CRON_FILE"
-echo "* * * * * bash $MAIN_DIR/command_get_details.sh" >> "$CRON_FILE"
+echo "* * * * * bash $MAIN_DIR/command.sh" >> "$CRON_FILE"
 echo "0 0 30 * * bash $MAIN_DIR/convert_to_csv.sh" >> "$CRON_FILE"
 
 # Mengambil entri cron yang sudah ada
